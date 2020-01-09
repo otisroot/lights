@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.wrap {
+            width: 100px;
+            margin: auto;
+            margin-top: 5%;
+            border: 1px solid;
+            height: 280px;
+            padding: 10px;
+            background-color: #000;
+        }
+        
+        div.light {
+            width: 100px;
+            height: 80px;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            margin: 10px auto;
+        }
+        
+        div.red {
+            background-color: #000;
+        }
+        
+        div.yellow {
+            background-color: #000;
+        }
+        
+        div.green {
+            background-color: #000;
+        }
+        
+        div.tru {
+            width: 20px;
+            height: 100px;
+            background-color: #000;
+            margin: auto;
+        }
+        
+        p {
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="cot">
+            <div class="light red">
+                <p class="timered"></p>
+            </div>
+            <div class="light yellow">
+                <p class="timeyellow"></p>
+            </div>
+            <div class="light green">
+                <p class="timegreen">
+                    </i>
+            </div>
+        </div>
+        <div class="tru">
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            var seconds = 10;
+            var count = 0;
+            var setTime = () => {
+                setInterval(function() {
+                    seconds--;
+                    $('p.timered').html(seconds);
+                    if (seconds === 0) {
+                        seconds = 10;
+                        count++;
+                    }
+                    if (count === 1) {
+                        lightGreen();
+
+                    } else if (count === 2) {
+                        lightYellow()
+
+                    } else if (count === 3) {
+                        lightRed();
+                        count = 0;
+                    }
+                }, 1000);
+            }
+            var lightRed = () => {
+                $('.red').css('background', 'red');
+                $('.yellow').css('background', '#000');
+                $('p.timegreen').empty();
+                $('p.timered').empty();
+                $('p.timeyellow').empty();
+                $('p.timered').html(seconds);
+            }
+            var lightYellow = () => {
+                $('.yellow').css('background', 'yellow');
+                $('.green').css('background', '#000');
+                $('.yellow').css('background', 'yellow');
+                $('p.timegreen').empty();
+                $('p.timered').empty();
+                $('p.timeyellow').html(seconds);
+                $('p.timeyellow').css('color', 'black');
+            }
+            var lightGreen = () => {
+                $('.green').css('background', 'green');
+                $('.red').css('background', '#000');
+                $('p.timered').empty();
+                $('p.timegreen').html(seconds);
+            }
+            setTime();
+            lightRed();
+        });
+    </script>
+</body>
+
+</html>
